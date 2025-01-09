@@ -12,7 +12,11 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 const reviews_data = JSON.parse(fs.readFileSync('reviews.json', 'utf8'));
 const dealerships_data = JSON.parse(fs.readFileSync('dealerships.json', 'utf8'));
 
-mongoose.connect('mongodb://mongo_db:27017/', { dbName: 'dealershipsDB' });
+// for local deployments 'mongodb://mongo_db:27017/'
+mongoose.connect('mongodb://mongo_db:27017/', { dbName: 'dealershipsDB' })
+//mongoose.connect('mongodb://mongo.1nwwngrynv7v.us-south.codeengine.appdomain.cloud', { dbName: 'dealershipsDB' })
+    //.then((result) => console.log('connected to db'))
+    //.catch((err) => console.log(err));
 
 const Reviews = require('./review');
 const Dealerships = require('./dealership');
@@ -112,6 +116,11 @@ app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
         res.status(500).json({ error: 'Error inserting review' });
     }
 });
+
+mongoose.connection.on('error', err => {
+    console.error('MongoDB connection error:', err);
+});
+
 
 // Start the Express server
 app.listen(port, () => {

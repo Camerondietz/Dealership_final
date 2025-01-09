@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-ccow$tz_=9%dxu4(0%^(z%nx32#s@(zt9$ih@)5l54yny)wm-0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'http://127.0.0.1:8000']
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'http://127.0.0.1:8000', 'application-af.1nwwngrynv7v.us-south.codeengine.appdomain.cloud']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://127.0.0.1',  'http://application-af.1nwwngrynv7v.us-south.codeengine.appdomain.cloud',  'https://application-af.1nwwngrynv7v.us-south.codeengine.appdomain.cloud']
 
 # REST Framework settings
 REST_FRAMEWORK = {
